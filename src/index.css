@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 768px) {
+    /* 모바일 화면에만 적용되는 스타일 */
+    body {
+        font-size: 16px;
+    }
+    .container {
+        width: 100%;
+        max-width: 540px;
+    }
+}
