@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
     const [number, setNumber] = useState(null);
+    const [isGenerating, setIsGenerating] = useState(true);
 
     const generateRandomNumber = () => {
         const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -10,19 +11,30 @@ function App() {
     };
 
     useEffect(() => {
-        generateRandomNumber();
-    }, []); // Empty dependency array to run only once
+        let intervalId;
+        if (isGenerating) {
+            intervalId = setInterval(() => {
+                generateRandomNumber();
+            }, 10); // Change the interval time as needed
+        }
+
+        return () => clearInterval(intervalId);
+    }, [isGenerating]);
+
+    const toggleGenerating = () => {
+        setIsGenerating(!isGenerating);
+    };
 
     return (
         <div className="container w-full mx-auto">
             <div className="App">
                 <button
                     className="button text-center font-bold p-4 bg-blue-500 text-white"
-                    onClick={() => generateRandomNumber()}
+                    onClick={toggleGenerating}
                 >
-                    랜덤 숫자 추첨
+                    {isGenerating ? '스탑' : '재개'}
                 </button>
-                {number && <p>랜덤 숫자: {number}</p>}
+                {number && <p> {number}</p>}
             </div>
         </div>
     );
