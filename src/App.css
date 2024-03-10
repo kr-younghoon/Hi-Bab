@@ -16,16 +16,47 @@ html {
 body {
     background-color: #000;
     color: #fff;
-    display: flex;
 
-    justify-content: center;
+    height: 100vh;
 }
 
 p {
     font-size: 300px;
+    margin: 0.5em;
 }
 
 button {
     margin: 1em;
     padding: 3em;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.App {
+    text-align: center;
+}
+
+.button {
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #4caf50; /* Green */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 50px;
+    color: black;
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker Green */
+}
+
+p {
+    margin: 20px;
 }
